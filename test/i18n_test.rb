@@ -60,6 +60,11 @@ class I18nTest < Test::Unit::TestCase
     I18n.translate :bogus
     I18n.exception_handler = :default_exception_handler # revert it
   end
+  
+  def test_delegates_locales_to_backend
+    I18n.backend.expects(:locales)
+    I18n.locales
+  end
 
   def test_delegates_translate_to_backend
     I18n.backend.expects(:translate).with 'de', :foo, {}

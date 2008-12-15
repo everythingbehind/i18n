@@ -44,6 +44,11 @@ module I18n
     def locale=(locale)
       Thread.current[:locale] = locale
     end
+    
+    # Returns an array of availiable locales
+    def locales
+      backend.locales
+    end
 
     # Sets the exception handler.
     def exception_handler=(exception_handler)
