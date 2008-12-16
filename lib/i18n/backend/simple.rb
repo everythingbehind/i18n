@@ -223,14 +223,19 @@ module I18n
         # Walks a given tree of hashes, returning an array of possible walks through the tree.
         #   flatten_hash_tree_keys({:a => { :b => 3, :c => 4 } }) # => [ [:a, :b], [:a, :c] ]
         def flatten_hash_tree_keys(tree)
-          tree.map{|key, value|
-            case value
-            when Hash
-              flatten_hash_tree_keys(value).map{|normalised_subtree| [key] + [normalised_subtree] }
-            else
-              [key]
-            end
-          }
+          if tree.is_a? Hash
+            result = []
+              tree.each{|key, value|
+                if flattened_subtree = flatten_hash_tree_keys(value)
+                  flattened_subtree.each do |set|
+                    result.push([key, *set])
+                  end
+                else
+                  result.push([key])
+                end
+              }
+            result
+          end
         end
     end
   end
