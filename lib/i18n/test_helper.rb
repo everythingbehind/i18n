@@ -11,7 +11,7 @@ module I18n
         missing_translations = required_translations - defined_translations
                 
         if missing_translations.any?
-          missing_translations_for_output = [*missing_translations.map{|a| " * #{a.join('.')}" }].join("\n")
+          missing_translations_for_output = missing_translations.map{|translation_key_parts| translation_key_parts.map{|a| " * #{a.join('.')}" }}.join("\n")
           raise Test::Unit::AssertionFailedError.new("#{message} - Missing translations for #{target_locale.inspect}:\n#{missing_translations_for_output}")
         end
       end
