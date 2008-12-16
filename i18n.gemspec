@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
     'lib/i18n/backend/simple.rb',
     'lib/i18n/exceptions.rb',
     'lib/i18n.rb',
+    'lib/i18n/test_helper.rb'
     'MIT-LICENSE',
     'README.textile'
   ]
@@ -22,6 +23,7 @@ Gem::Specification.new do |s|
     'test/i18n_test.rb',
     'test/locale/en.rb',
     'test/locale/en.yml',
-    'test/simple_backend_test.rb'
+    'test/simple_backend_test.rb',
+    'test/i18n_test_helper_test.rb'
   ]
 end
