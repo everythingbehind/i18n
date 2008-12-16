@@ -44,7 +44,7 @@ module I18n
     def locale=(locale)
       Thread.current[:locale] = locale
     end
-    
+
     # Returns an array of availiable locales
     def locales
       backend.locales

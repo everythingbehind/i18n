@@ -73,9 +73,9 @@ module I18n
         @initialized = false
         @translations = nil
       end
-      
+
       def locales
-        @translations.keys
+        translations.keys
       end
 
       protected
