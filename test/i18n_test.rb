@@ -127,4 +127,10 @@ class I18nTest < Test::Unit::TestCase
   def test_localize_object_raises_argument_error
     assert_raises(I18n::ArgumentError) { I18n.l Object.new }
   end
+  
+  def test_should_return_nested_scopes_as_arrays_of_keys_when_looking_for_available_translations
+    elements = I18n.available_translations(:'en')
+    assert elements.any?{|v| v == [:currency, :format, :separator] }, "Expected #{elements.inspect} to contain [:currency, :format, :separator]"
+    assert elements.any?{|v| v == [:currency, :format, :delimiter] }, "Expected #{elements.inspect} to contain [:currency, :format, :delimiter]"
+  end
 end
