@@ -7,6 +7,7 @@
 # License::   MIT
 require 'i18n/backend/simple'
 require 'i18n/exceptions'
+require 'i18n/test_helper'
 
 module I18n
   @@backend = nil
@@ -48,6 +49,11 @@ module I18n
     # Returns an array of availiable locales
     def locales
       backend.locales
+    end
+
+    # Lists all available translation keys (including scopes) for a given locale
+    def available_translations(locale)
+      backend.available_translations(locale)
     end
 
     # Sets the exception handler.

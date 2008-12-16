@@ -78,6 +78,10 @@ module I18n
         translations.keys
       end
 
+      def available_translations(locale)
+        flatten_hash_tree_keys(translations[locale])
+      end
+
       protected
         def init_translations
           load_translations(*I18n.load_path)
@@ -213,6 +217,19 @@ module I18n
             value = deep_symbolize_keys(value) if value.is_a? Hash
             result[(key.to_sym rescue key) || key] = value
             result
+          }
+        end
+
+        # Walks a given tree of hashes, returning an array of possible walks through the tree.
+        #   flatten_hash_tree_keys({:a => { :b => 3, :c => 4 } }) # => [ [:a, :b], [:a, :c] ]
+        def flatten_hash_tree_keys(tree)
+          tree.map{|key, value|
+            case value
+            when Hash
+              flatten_hash_tree_keys(value).map{|normalised_subtree| [key] + [normalised_subtree] }
+            else
+              [key]
+            end
           }
         end
     end
