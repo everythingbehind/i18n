@@ -1,13 +1,13 @@
 Gem::Specification.new do |s|
   s.name = "i18n"
-  s.version = "0.1.1"
-  s.date = "2008-10-26"
+  s.version = "0.1.2"
+  s.date = "2008-12-16"
   s.summary = "Internationalization support for Ruby"
   s.email = "rails-i18n@googlegroups.com"
   s.homepage = "http://rails-i18n.org"
   s.description = "Add Internationalization support to your Ruby application."
   s.has_rdoc = false
-  s.authors = ['Sven Fuchs', 'Joshua Harvey', 'Matt Aimonetti', 'Stephan Soller', 'Saimon Moore']
+  s.authors = ['Sven Fuchs', 'Joshua Harvey', 'Matt Aimonetti', 'Stephan Soller', 'Saimon Moore', 'Ben Sales', 'Tom Lea']
   s.files = [
     'i18n.gemspec',
     'lib/i18n/backend/simple.rb',
