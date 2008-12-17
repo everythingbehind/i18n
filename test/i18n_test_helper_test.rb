@@ -1,3 +1,12 @@
+# encoding: utf-8
+$:.unshift "lib"
+
+require 'rubygems'
+require 'test/unit'
+require 'mocha'
+require 'i18n'
+require 'time'
+require 'yaml'
 
 class EqualLocalesTestHelperTest < Test::Unit::TestCase
   include I18n::TestHelper
