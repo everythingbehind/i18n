@@ -2,7 +2,7 @@ module I18n
   module TestHelper
     def assert_all_locales_have_translations_available_to_the_default_locale(message = "All translations should be available in all locales")
       default_locale = I18n.default_locale.to_sym
-      locales_to_check = I18n.locales - [default_locale]
+      locales_to_check = I18n.available_locales - [default_locale]
 
       required_translations = I18n.available_translations(default_locale)
 
