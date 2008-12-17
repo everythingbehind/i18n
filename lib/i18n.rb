@@ -47,8 +47,8 @@ module I18n
     end
 
     # Returns an array of availiable locales
-    def locales
-      backend.locales
+    def available_locales
+      backend.available_locales
     end
 
     # Lists all available translation keys (including scopes) for a given locale

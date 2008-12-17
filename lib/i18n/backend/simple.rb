@@ -74,7 +74,7 @@ module I18n
         @translations = nil
       end
 
-      def locales
+      def available_locales
         translations.keys
       end
 
