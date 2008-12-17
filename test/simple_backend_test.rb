@@ -109,9 +109,9 @@ class I18nSimpleBackendTranslationsTest < Test::Unit::TestCase
   def test_list_of_locales
     @backend.store_translations :'en', :foo => {:bar => 'bar'}
     @backend.store_translations :'fr', :foo => {:bar => 'baz'}
-    assert_equal 2, @backend.locales.length
-    assert @backend.locales.include?(:en)
-    assert @backend.locales.include?(:fr)
+    assert_equal 2, @backend.available_locales.length
+    assert @backend.available_locales.include?(:en)
+    assert @backend.available_locales.include?(:fr)
   end
 
   def test_store_translations_deep_merges_translations
