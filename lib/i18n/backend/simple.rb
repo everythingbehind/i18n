@@ -84,7 +84,7 @@ module I18n
 
       protected
         def init_translations
-          load_translations(*I18n.load_path)
+          load_translations(*I18n.load_path.flatten)
           @initialized = true
         end
 
