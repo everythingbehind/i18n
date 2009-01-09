@@ -46,7 +46,7 @@ module I18n
       Thread.current[:locale] = locale
     end
 
-    # Returns an array of availiable locales
+    # Returns an array of locales for which translations are available
     def available_locales
       backend.available_locales
     end

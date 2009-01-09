@@ -105,14 +105,6 @@ class I18nSimpleBackendTranslationsTest < Test::Unit::TestCase
     @backend.store_translations :'en', :foo => 'bar'
     assert_equal Hash[:'en', {:foo => 'bar'}], backend_get_translations
   end
-  
-  def test_list_of_locales
-    @backend.store_translations :'en', :foo => {:bar => 'bar'}
-    @backend.store_translations :'fr', :foo => {:bar => 'baz'}
-    assert_equal 2, @backend.available_locales.length
-    assert @backend.available_locales.include?(:en)
-    assert @backend.available_locales.include?(:fr)
-  end
 
   def test_store_translations_deep_merges_translations
     @backend.store_translations :'en', :foo => {:bar => 'bar'}
@@ -129,6 +121,16 @@ class I18nSimpleBackendTranslationsTest < Test::Unit::TestCase
     # backend_reset_translations!
     @backend.store_translations 'en', 'foo' => {'bar' => 'bar', 'baz' => 'baz'}
     assert_equal Hash[:'en', {:foo => {:bar => 'bar', :baz => 'baz'}}], backend_get_translations
+  end
+end
+
+class I18nSimpleBackendAvailableLocalesTest < Test::Unit::TestCase
+  def test_available_locales
+    @backend = I18n::Backend::Simple.new
+    @backend.store_translations 'de', :foo => 'bar'
+    @backend.store_translations 'en', :foo => 'foo'
+
+    assert_equal ['de', 'en'], @backend.available_locales.map{|locale| locale.to_s }.sort
   end
 end
 

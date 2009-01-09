@@ -69,13 +69,15 @@ module I18n
         @initialized ||= false
       end
 
+      # Returns an array of locales for which translations are available
+      def available_locales
+        init_translations unless initialized?
+        translations.keys
+      end
+
       def reload!
         @initialized = false
         @translations = nil
-      end
-
-      def available_locales
-        translations.keys
       end
 
       def available_translations(locale)
